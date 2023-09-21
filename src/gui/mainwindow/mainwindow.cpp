@@ -902,7 +902,7 @@ bool SimpleAsmWithEditorCheck::process_pragma(
     return true;
 }
 
-void MainWindow::compile_source() {
+void MainWindow::compile_source() { // I will use this to integrade Isaac's Tool. 
     bool error_occured = false;
     if (current_srceditor == nullptr) { return; }
     if (machine != nullptr) {
@@ -942,7 +942,7 @@ void MainWindow::compile_source() {
     if (error_occured) { show_messages(); }
 }
 
-void MainWindow::build_execute() {
+void MainWindow::build_execute() { // Build using Daniel's Tool. Reuse save changed dialog.
     QStringList list;
     if (modified_file_list(list)) {
         auto *dialog = new SaveChnagedDialog(list, this);
@@ -965,8 +965,8 @@ void MainWindow::build_execute_with_save(
     build_execute_no_check();
 }
 
-void MainWindow::build_execute_no_check() {
-    QString work_dir = "";
+void MainWindow::build_execute_no_check() { // This is where the call to Daniel's Tool will go.
+    QString work_dir = ""; //
     ExtProcess *proc;
     ExtProcess *procptr = build_process;
     if (procptr != nullptr) {

@@ -10,6 +10,7 @@ set(KAREL_KOCI "Karel Koci <cynerd@email.cz>")
 set(PAVEL_PISA "Pavel Pisa <pisa@cmp.felk.cvut.cz>")
 set(JAKUB_DUPAK "Jakub Dupak <dev@jakubdupak.com>")
 set(MAX_HOLLMANN "Max Hollmann <hollmmax@fel.cvut.cz>")
+set(CMAKE_PREFIX_PATH "$HOME/Qt/5.15.2/gcc_64")
 
 set(PROJECT_HOMEPAGE_URL "https://github.com/cvut/qtrvsim")
 set(GENERIC_NAME "RISC-V CPU simulator")
