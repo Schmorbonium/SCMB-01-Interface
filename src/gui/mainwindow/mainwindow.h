@@ -138,7 +138,7 @@ private:
 
     Box<QSettings> settings;
 
-    Box<machine::Machine> machine; // Current simulated machine
+    Box<machine::Machine> machine; // Current simulated machine to swap with Isaac's code
 
     void show_dockwidget(QDockWidget *w, Qt::DockWidgetArea area = Qt::RightDockWidgetArea);
     void add_src_editor_to_tabs(SrcEditor *editor);
