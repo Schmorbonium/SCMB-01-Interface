@@ -216,7 +216,7 @@ void MainWindow::create_core(
     bool load_executable,
     bool keep_memory) {
     // Create machine
-    auto *new_machine = new machine::Machine(config, true, load_executable);
+    auto *new_machine = new machine::SCMBComm(config, true, load_executable);
 
     if (keep_memory && (machine != nullptr)) {
         new_machine->memory_rw()->reset(*machine->memory());

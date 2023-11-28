@@ -5,6 +5,7 @@
 #include "dialogs/new/newdialog.h"
 #include "extprocess.h"
 #include "machine/machine.h"
+#include "machine/scmb_comm.h"
 #include "machine/machineconfig.h"
 #include "scene.h"
 #include "ui_MainWindow.h"
@@ -138,7 +139,7 @@ private:
 
     Box<QSettings> settings;
 
-    Box<machine::Machine> machine; // Current simulated machine to swap with Isaac's code
+    Box<machine::SCMBComm> machine; // Current simulated machine to swap with Isaac's code
 
     void show_dockwidget(QDockWidget *w, Qt::DockWidgetArea area = Qt::RightDockWidgetArea);
     void add_src_editor_to_tabs(SrcEditor *editor);

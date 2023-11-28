@@ -34,3 +34,24 @@ const MachineConfig &SCMBComm::config()
 {
     std::cout << "Return MachineConfig here";
 }
+
+void SCMBComm::set_speed(unsigned int ips, unsigned int time_chunk)
+{
+    std::string output = "Setting speed to " + std::to_string(ips) + " instructions per second";
+    std::cout << output;
+}
+
+const Registers *SCMBComm::registers()
+{
+    std::cout << "Return values contained in registers";
+}
+
+const CSR::ControlState *SCMBComm::control_state()
+{
+    std::cout << "Return control state";
+}
+
+const Memory *SCMBComm::memory()
+{
+    std::cout << "Return memory object";
+}
