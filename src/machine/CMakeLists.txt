@@ -9,6 +9,7 @@ set(machine_SOURCES
 		core.cpp
 		instruction.cpp
 		machine.cpp
+		scmb_comm.cpp
 		machineconfig.cpp
 		memory/backend/lcddisplay.cpp
 		memory/backend/memory.cpp
@@ -33,6 +34,7 @@ set(machine_HEADERS
 		csr/address.h
 		instruction.h
 		machine.h
+		scmb_comm.h
 		machineconfig.h
 		machinedefs.h
 		memory/address.h
