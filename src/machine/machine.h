@@ -95,10 +95,10 @@ signals:
     void post_tick(); // Emitted after tick to allow updates
     void set_interrupt_signal(uint irq_num, bool active);
 
-private slots:
+protected slots:
     void step_timer();
 
-private:
+protected:
     void step_internal(bool skip_break = false);
     MachineConfig machine_config;
 
