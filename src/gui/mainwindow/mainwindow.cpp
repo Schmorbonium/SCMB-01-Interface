@@ -950,7 +950,7 @@ void MainWindow::build_execute() { // Build using Daniel's Tool. Reuse save chan
             dialog, &SaveChnagedDialog::user_decision, this, &MainWindow::build_execute_with_save);
         dialog->open();
     } else {
-        build_execute_no_check();
+        build_with_make_out_of_directory();
     }
 }
 
@@ -962,7 +962,7 @@ void MainWindow::build_execute_with_save(
         SrcEditor *editor = source_editor_for_file(fname, false);
         editor->saveFile();
     }
-    build_execute_no_check();
+    build_with_make_out_of_directory();
 }
 
 void MainWindow::build_execute_no_check() { // This is where the call to Daniel's Tool will go.
@@ -996,6 +996,31 @@ void MainWindow::build_execute_no_check() { // This is where the call to Daniel'
     }
     if (!work_dir.isEmpty()) { proc->setWorkingDirectory(work_dir); }
     // API without args has been deprecated.
+    proc->start("make", {}, QProcess::Unbuffered | QProcess::ReadOnly);
+}
+
+void MainWindow::build_with_make_out_of_directory()
+{
+    QString work_dir = "";
+    ExtProcess *proc;
+    ExtProcess *procptr = build_process;
+    if (procptr != nullptr) {
+        procptr->close();
+        procptr->deleteLater();
+    }
+    emit clear_messages();
+    show_messages();
+    proc = new ExtProcess(this);
+    build_process = procptr;
+    connect(proc, &ExtProcess::report_message, this, &MainWindow::report_message);
+    connect(
+        proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this,
+        &MainWindow::build_execute_finished);
+    QString file_name = QFileDialog::getExistingDirectory(
+        this, tr("Choose Where Make Is"), "/home", QFileDialog::ShowDirsOnly
+                                                    | QFileDialog::DontResolveSymlinks);
+    qDebug() << file_name << endl;
+    if (!work_dir.isEmpty()) { proc->setWorkingDirectory(file_name); }
     proc->start("make", {}, QProcess::Unbuffered | QProcess::ReadOnly);
 }
 

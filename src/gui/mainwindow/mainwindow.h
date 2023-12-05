@@ -72,6 +72,7 @@ public slots:
     void compile_source();
     void build_execute();
     void build_execute_no_check();
+    void build_with_make_out_of_directory();
     void build_execute_with_save(bool cancel, QStringList tosavelist);
     void show_registers();
     void show_program();
